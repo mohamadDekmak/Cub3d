@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
-
+# include "../libft/libft.h"
 /* -------------------------------------------------------------------------- */
 /*  Config                                                                    */
 /* -------------------------------------------------------------------------- */
@@ -113,4 +113,6 @@ void	free_game(t_game *game);
 //Parsing
 
 int parse_cub(char *filename, t_game *game);
+int check_extention(char *filename);
+
 #endif
