@@ -1,6 +1,6 @@
 NAME		= cub3D
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CC			= cc 
+CFLAGS		= -Wall -Wextra -Werror -g
 
 MLX_DIR		= minilibx-linux
 MLX_INC		= -I$(MLX_DIR)
@@ -18,7 +18,9 @@ SRCS = \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \
+	gnl/get_next_line_utils.c \
 	gnl/get_next_line.c \
+
 
 	
 

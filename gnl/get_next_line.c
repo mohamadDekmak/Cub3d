@@ -48,7 +48,7 @@ char	*trim_stash(char *stash)
 		i++;
 	if (!stash[i])
 		return (free(stash), NULL);
-	new_stash = malloc(ft_strlen(stash) - i + 1);
+	new_stash = malloc(gnl_strlen(stash) - i + 1);
 	if (!new_stash)
 		return (free(stash), NULL);
 	i++;
@@ -69,13 +69,13 @@ char	*read_to_stash(int fd, char *stash)
 	if (!buffer)
 		return (NULL);
 	bytes = 1;
-	while (!ft_strchr(stash, '\n') && bytes > 0)
+	while (!gnl_strchr(stash, '\n') && bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
 			return (free(buffer), free(stash), NULL);
 		buffer[bytes] = '\0';
-		stash = ft_strjoin(stash, buffer);
+		stash = gnl_strjoin(stash, buffer);
 	}
 	free(buffer);
 	return (stash);
