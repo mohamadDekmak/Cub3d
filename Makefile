@@ -9,7 +9,7 @@ MLX_LIB		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 LIBFT_DIR   = libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
-INCS        = -Iincludes $(MLX_INC) -I$(LIBFT_DIR)
+INCS = -Iincludes  -I$(LIBFT_DIR) -Ignl $(MLX_INC)
 
 SRC_DIR		= src
 SRCS = \
@@ -18,6 +18,8 @@ SRCS = \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \
+	gnl/get_next_line.c \
+
 	
 
 OBJ_DIR		= obj
