@@ -15,7 +15,7 @@ int parse_cub(char *filename, t_game *game)
     line = get_next_line(fd);
     while(line)
     {
-        printf("%s",line);
+        parse_line(line, game);
         free(line);
         line = get_next_line(fd);
     }

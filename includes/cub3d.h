@@ -115,5 +115,5 @@ void	free_game(t_game *game);
 
 int parse_cub(char *filename, t_game *game);
 int check_extention(char *filename);
-
+void parse_line(char *line, t_game *game);
 #endif
