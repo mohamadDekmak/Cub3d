@@ -12,8 +12,8 @@ SRC_DIR		= src
 SRCS		= \
 	$(SRC_DIR)/main.c \
 	$(SRC_DIR)/events/hooks.c \
-	$(SRC_DIR)/utils/errors.c
-
+	$(SRC_DIR)/utils/errors.c \
+	$(SRC_DIR)/parsing/parser.c
 OBJ_DIR		= obj
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

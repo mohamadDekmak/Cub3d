@@ -108,4 +108,9 @@ int		handle_close(t_game *game);
 int		error_exit(t_game *game, char *msg);
 void	free_game(t_game *game);
 
+
+
+//Parsing
+
+int parse_cub(char *filename, t_game *game);
 #endif

@@ -50,6 +50,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_game(&game);
+	if(parse_cub(argv[1], &game))
+		return 1;
+	
 	if (setup_window(&game) != 0)
 		return (1);
 	mlx_loop(game.mlx);
