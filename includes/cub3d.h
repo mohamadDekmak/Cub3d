@@ -125,6 +125,10 @@ typedef struct s_ray
 int		handle_keypress(int keycode, t_game *game);
 int		handle_close(t_game *game);
 
+/* render/ */
+int		get_rgb(int r, int g, int b);
+void	my_pixel_put(t_img *img, int x, int y, int color);
+
 /* utils/ */
 int		error_exit(t_game *game, char *msg);
 void	free_game(t_game *game);
