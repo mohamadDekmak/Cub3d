@@ -14,9 +14,7 @@
 
 static void	init_game(t_game *game)
 {
-	game->mlx = NULL;
-	game->win = NULL;
-	game->frame.ptr = NULL;
+	ft_bzero(game, sizeof(t_game));
 }
 
 static int	setup_window(t_game *game)
@@ -52,7 +50,14 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	if(parse_cub(argv[1], &game))
 		return 1;
-	
+
+	/* STAGE 0 — temporary: load_stub() fills game->map/game->player by hand
+	 * since parse_cub() doesn't populate them yet. Delete this call once it
+	 * does (see Stage 13 of the raycasting plan). */
+	load_stub(&game);
+	printf("[stub] map %dx%d, player at (%.2f, %.2f)\n",
+		game.map.width, game.map.height, game.player.x, game.player.y);
+
 	if (setup_window(&game) != 0)
 		return (1);
 	mlx_loop(game.mlx);

@@ -15,6 +15,7 @@ SRC_DIR		= src
 SRCS = \
     $(SRC_DIR)/main.c \
 	$(SRC_DIR)/utils/errors.c \
+	$(SRC_DIR)/utils/stub_map.c \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \

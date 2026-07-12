@@ -97,6 +97,26 @@ typedef struct s_game
 	t_player	player;
 }	t_game;
 
+/* One ray's working state during a DDA cast. Filled in and read back by      */
+/* the raycasting functions in src/render/ — not touched by the parser.      */
+/* Grows stage by stage: camera_x arrives in Stage 6 (FOV sweep),             */
+/* line_height/draw_start/draw_end arrive in Stage 4 (projection).           */
+typedef struct s_ray
+{
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	double	perp_dist;
+}	t_ray;
+
 /* -------------------------------------------------------------------------- */
 /*  Prototypes                                                                */
 /* -------------------------------------------------------------------------- */
@@ -116,4 +136,7 @@ void	free_game(t_game *game);
 int parse_cub(char *filename, t_game *game);
 int check_extention(char *filename);
 void parse_line(char *line, t_game *game);
+
+/* utils/stub_map.c — TEMPORARY, see Stage 13 in the raycasting plan */
+void	load_stub(t_game *game);
 #endif
