@@ -5,31 +5,17 @@ void parse_line(char *line, t_game *game)
     (void)game;
 
     if(ft_strncmp(line , "NO " ,3) ==0)
-    {
-        printf("North TEXTURE\n");
-    }
+       parse_texture(line,game);
     else if (ft_strncmp(line, "SO " ,3) == 0)
-    {
-        printf("South TEXTURE\n");
-    }
+       parse_texture(line,game);
     else if(ft_strncmp(line , "WE " , 3) ==0)
-    {
-        printf("WEST TEXTURE\n");
-    }
+       parse_texture(line,game);
     else if(ft_strncmp(line , "EA " ,3) ==0)
-    {
-        printf("EAST TEXTURE\n");
-    }
+       parse_texture(line,game);
      else if(ft_strncmp(line , "F " ,2) ==0)
-    {
-        printf("Floor COLOR\n");
-    }
+      parse_texture(line,game);
     else if(ft_strncmp(line , "C " ,2) ==0)
-    {
-        printf("CEILING COLOR\n");
-    }
+        parse_texture(line,game);
     else 
-    {
-        printf("MAP LINE : %s" , line);
-    }
+       parse_texture(line,game);
 }

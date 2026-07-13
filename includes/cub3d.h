@@ -73,6 +73,7 @@ typedef struct s_map
 	int		fl_color;
 	int		ce_color;
 	char	*tex_path[4];
+	int		map_started;
 }	t_map;
 
 /* The player: position + direction vector + camera plane.                    */
@@ -142,6 +143,7 @@ void	free_game(t_game *game);
 int parse_cub(char *filename, t_game *game);
 int check_extention(char *filename);
 void parse_line(char *line, t_game *game);
+void parse_texture(char *line , t_game *game);
 
 /* utils/stub_map.c — TEMPORARY, see Stage 13 in the raycasting plan */
 void	load_stub(t_game *game);
