@@ -24,6 +24,7 @@ SRCS = \
 	$(SRC_DIR)/parsing/parse_line.c \
 	$(SRC_DIR)/parsing/parse_texture.c \
 	$(SRC_DIR)/parsing/parse_color.c \
+	$(SRC_DIR)/parsing/parse_map.c \
 	gnl/get_next_line_utils.c \
 	gnl/get_next_line.c \
 
