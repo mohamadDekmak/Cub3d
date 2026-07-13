@@ -13,9 +13,9 @@ void parse_line(char *line, t_game *game)
     else if(ft_strncmp(line , "EA " ,3) ==0)
        parse_texture(line,game);
      else if(ft_strncmp(line , "F " ,2) ==0)
-      parse_texture(line,game);
+      parse_color(line,game);
     else if(ft_strncmp(line , "C " ,2) ==0)
-        parse_texture(line,game);
+        parse_color(line,game);
     else 
        parse_texture(line,game);
 }
