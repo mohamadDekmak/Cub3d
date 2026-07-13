@@ -17,6 +17,7 @@ SRCS = \
 	$(SRC_DIR)/utils/errors.c \
 	$(SRC_DIR)/utils/stub_map.c \
 	$(SRC_DIR)/render/image.c \
+	$(SRC_DIR)/render/draw.c \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \

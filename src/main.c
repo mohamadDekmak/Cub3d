@@ -39,28 +39,6 @@ static int	setup_window(t_game *game)
 	return (0);
 }
 
-/* STAGE 1 — temporary: prove my_pixel_put()/get_rgb() address the buffer
- * correctly by painting it one solid color before any render loop exists.
- * Deleted in Stage 2 once render_frame() takes over. */
-static void	fill_test(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < WIN_H)
-	{
-		x = 0;
-		while (x < WIN_W)
-		{
-			my_pixel_put(&game->frame, x, y, get_rgb(255, 140, 0));
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(game->mlx, game->win, game->frame.ptr, 0, 0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -84,7 +62,7 @@ int	main(int argc, char **argv)
 
 	if (setup_window(&game) != 0)
 		return (1);
-	fill_test(&game);
+	mlx_loop_hook(game.mlx, (int (*)(void))(void *)render_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

@@ -128,6 +128,8 @@ int		handle_close(t_game *game);
 /* render/ */
 int		get_rgb(int r, int g, int b);
 void	my_pixel_put(t_img *img, int x, int y, int color);
+void	render_frame(t_game *game);
+int		render_loop(t_game *game);
 
 /* utils/ */
 int		error_exit(t_game *game, char *msg);
