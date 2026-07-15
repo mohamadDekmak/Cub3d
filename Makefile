@@ -1,6 +1,6 @@
 NAME		= cub3D
-CC			= cc 
-CFLAGS		= -Wall -Wextra -Werror -g
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -g -MMD -MP
 
 MLX_DIR		= minilibx-linux
 MLX_INC		= -I$(MLX_DIR)
@@ -18,6 +18,7 @@ SRCS = \
 	$(SRC_DIR)/utils/stub_map.c \
 	$(SRC_DIR)/render/image.c \
 	$(SRC_DIR)/render/draw.c \
+	$(SRC_DIR)/render/raycast.c \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \
@@ -59,3 +60,6 @@ re: fclean all
 bonus: all
 
 .PHONY: all clean fclean re bonus
+
+DEPS = $(patsubst %.o,%.d,$(filter $(OBJ_DIR)/%.o,$(OBJS)))
+-include $(DEPS)

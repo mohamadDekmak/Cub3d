@@ -100,8 +100,7 @@ typedef struct s_game
 
 /* One ray's working state during a DDA cast. Filled in and read back by      */
 /* the raycasting functions in src/render/ — not touched by the parser.      */
-/* Grows stage by stage: camera_x arrives in Stage 6 (FOV sweep),             */
-/* line_height/draw_start/draw_end arrive in Stage 4 (projection).           */
+/* Grows stage by stage: camera_x arrives in Stage 6 (FOV sweep).             */
 typedef struct s_ray
 {
 	double	dir_x;
@@ -116,6 +115,9 @@ typedef struct s_ray
 	int		step_y;
 	int		side;
 	double	perp_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }	t_ray;
 
 /* -------------------------------------------------------------------------- */
@@ -131,6 +133,9 @@ int		get_rgb(int r, int g, int b);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	render_frame(t_game *game);
 int		render_loop(t_game *game);
+int		is_wall(t_game *game, int map_x, int map_y);
+void	cast_ray(t_game *game, t_ray *ray);
+void	draw_column(t_game *game, t_ray *ray, int x);
 
 /* utils/ */
 int		error_exit(t_game *game, char *msg);
