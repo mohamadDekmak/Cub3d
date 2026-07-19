@@ -1,11 +1,5 @@
 #include "cub3d.h"
 
-/* TEMPORARY — delete once parse_cub() populates game->map/player for real.
- * See Stage 13 of the raycasting plan. This hand-fills the exact same
- * fields the real parser will eventually produce (map grid, dimensions,
- * floor/ceiling color, player spawn), mirroring maps/valid/simple.cub,
- * so early rendering work has real data before parsing is finished. */
-
 static char	*g_stub_rows[5] = {
 	"111111",
 	"100101",

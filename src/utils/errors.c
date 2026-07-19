@@ -36,6 +36,16 @@ void	free_game(t_game *game)
 			free(game->map.tex_path[i]);
 		i++;
 	}
+	if (game->map.grid)
+	{
+		i = 0;
+		while (i < game->map.height)
+		{
+			free(game->map.grid[i]);
+			i++;
+		}
+		free(game->map.grid);
+	}
 	if (game->frame.ptr)
 		mlx_destroy_image(game->mlx, game->frame.ptr);
 	if (game->win)
