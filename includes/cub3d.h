@@ -122,6 +122,7 @@ typedef struct s_ray
 	int		step_y;
 	int		side;
 	double	perp_dist;
+	double	wall_x;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
@@ -139,6 +140,7 @@ int		handle_close(t_game *game);
 /* render/ */
 int		get_rgb(int r, int g, int b);
 void	my_pixel_put(t_img *img, int x, int y, int color);
+int		get_tex_pixel(t_img *tex, int x, int y);
 void	render_frame(t_game *game);
 int		render_loop(t_game *game);
 int		is_wall(t_game *game, int map_x, int map_y);

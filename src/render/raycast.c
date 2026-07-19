@@ -87,11 +87,21 @@ static void	run_dda(t_game *game, t_ray *ray)
 			- ray->distance_between_horizontal_lines;
 }
 
+static void	compute_wall_x(t_game *game, t_ray *ray)
+{
+	if (ray->side == 0)
+		ray->wall_x = game->player.y + ray->perp_dist * ray->dir_y;
+	else
+		ray->wall_x = game->player.x + ray->perp_dist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
+}
+
 void	cast_ray(t_game *game, t_ray *ray, int x)
 {
 	init_ray(game, ray, x);
 	set_step(game, ray);
 	run_dda(game, ray);
+	compute_wall_x(game, ray);
 	ray->line_height = (int)(WIN_H / ray->perp_dist);
 	ray->draw_start = WIN_H / 2 - ray->line_height / 2;
 	if (ray->draw_start < 0)
