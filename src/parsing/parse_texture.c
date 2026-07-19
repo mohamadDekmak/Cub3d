@@ -3,7 +3,7 @@
 void parse_texture(char *line , t_game *game)
 {
     char *path;
-    path= ft_strtrim(line + 2 , "\n");
+    path= ft_strtrim(line + 2 , " \n");
 
     if(ft_strncmp(line, "NO", 2) == 0)
         game->map.tex_path[NO] = path;
