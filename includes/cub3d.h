@@ -107,10 +107,10 @@ typedef struct s_ray
 	double	dir_y;
 	int		map_x;
 	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
+	double	distance_to_next_vertical_line;
+	double	distance_to_next_horizontal_line;
+	double	distance_between_vertical_lines;
+	double	distance_between_horizontal_lines;
 	int		step_x;
 	int		step_y;
 	int		side;
@@ -151,6 +151,7 @@ void parse_line(char *line, t_game *game);
 void parse_texture(char *line , t_game *game);
 void parse_color(char *line , t_game *game);
 void parse_grid_line(char *line , t_game *game);
+int validate_map(t_game *game);
 
 /* utils/stub_map.c — TEMPORARY, see Stage 13 in the raycasting plan */
 void	load_stub(t_game *game);
