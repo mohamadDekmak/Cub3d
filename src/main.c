@@ -33,7 +33,9 @@ static int	setup_window(t_game *game)
 	game->frame.width = WIN_W;
 	game->frame.height = WIN_H;
 	mlx_hook(game->win, EVENT_KEYPRESS, 1L << 0,
-		(int (*)(void))(void *)handle_keypress, game);
+		(int (*)(void))(void *)handle_keydown, game);
+	mlx_hook(game->win, EVENT_KEYRELEASE, 1L << 1,
+		(int (*)(void))(void *)handle_keyup, game);
 	mlx_hook(game->win, EVENT_DESTROY, 0,
 		(int (*)(void))(void *)handle_close, game);
 	return (0);

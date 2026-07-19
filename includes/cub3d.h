@@ -46,11 +46,12 @@
 
 /* X11 events */
 # define EVENT_KEYPRESS 2
+# define EVENT_KEYRELEASE 3
 # define EVENT_DESTROY 17
 
-/* Movement/rotation step sizes */
-# define MOVE_SPEED 0.2
-# define ROT_SPEED 0.1
+/* Movement/rotation step sizes — per-frame now (Stage 9), not per-keypress */
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
 
 /* -------------------------------------------------------------------------- */
 /*  Data structures                                                           */
@@ -100,6 +101,7 @@ typedef struct s_game
 	t_img		tex[4];
 	t_map		map;
 	t_player	player;
+	int			keys[65536];
 }	t_game;
 
 /* One ray's working state during a DDA cast. Filled in and read back by      */
@@ -130,7 +132,8 @@ typedef struct s_ray
 /* -------------------------------------------------------------------------- */
 
 /* events/ */
-int		handle_keypress(int keycode, t_game *game);
+int		handle_keydown(int keycode, t_game *game);
+int		handle_keyup(int keycode, t_game *game);
 int		handle_close(t_game *game);
 
 /* render/ */
@@ -145,6 +148,7 @@ void	draw_column(t_game *game, t_ray *ray, int x);
 /* player/ */
 void	move_player(t_game *game, double move_x, double move_y);
 void	rotate_player(t_game *game, double angle);
+void	handle_movement(t_game *game);
 
 /* utils/ */
 int		error_exit(t_game *game, char *msg);

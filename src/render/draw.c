@@ -49,6 +49,7 @@ void	render_frame(t_game *game)
 
 int	render_loop(t_game *game)
 {
+	handle_movement(game);
 	render_frame(game);
 	return (0);
 }

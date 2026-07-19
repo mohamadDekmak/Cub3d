@@ -12,28 +12,21 @@
 
 #include "cub3d.h"
 
-/* STAGE 8 — v1: one step per keypress event, no held-key smoothness.
- * Replaced by a key-state array in Stage 9. */
-int	handle_keypress(int keycode, t_game *game)
+/* STAGE 9 — just record key state; the actual movement happens once per
+ * frame in handle_movement(), so held keys move smoothly. */
+int	handle_keydown(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		handle_close(game);
-	else if (keycode == KEY_W)
-		move_player(game, game->player.dir_x * MOVE_SPEED,
-			game->player.dir_y * MOVE_SPEED);
-	else if (keycode == KEY_S)
-		move_player(game, -game->player.dir_x * MOVE_SPEED,
-			-game->player.dir_y * MOVE_SPEED);
-	else if (keycode == KEY_D)
-		move_player(game, game->player.plane_x * MOVE_SPEED,
-			game->player.plane_y * MOVE_SPEED);
-	else if (keycode == KEY_A)
-		move_player(game, -game->player.plane_x * MOVE_SPEED,
-			-game->player.plane_y * MOVE_SPEED);
-	else if (keycode == KEY_RIGHT)
-		rotate_player(game, ROT_SPEED);
-	else if (keycode == KEY_LEFT)
-		rotate_player(game, -ROT_SPEED);
+	else if (keycode >= 0 && keycode < 65536)
+		game->keys[keycode] = 1;
+	return (0);
+}
+
+int	handle_keyup(int keycode, t_game *game)
+{
+	if (keycode >= 0 && keycode < 65536)
+		game->keys[keycode] = 0;
 	return (0);
 }
 
