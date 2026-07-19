@@ -1,21 +1,5 @@
 #include "cub3d.h"
 
-static void strip_cr(char *line)
-{
-	int r;
-	int w;
-
-	r = 0;
-	w = 0;
-	while (line[r])
-	{
-		if (line[r] != '\r')
-			line[w++] = line[r];
-		r++;
-	}
-	line[w] = '\0';
-}
-
 int parse_cub(char *filename, t_game *game)
 {
 	int		fd;
@@ -30,7 +14,6 @@ int parse_cub(char *filename, t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
-		strip_cr(line);
 		parse_line(line, game);
 		free(line);
 		line = get_next_line(fd);
