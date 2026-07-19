@@ -52,10 +52,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_game(&game);
-	if(parse_cub(argv[1], &game))
-		return 1;
-	if (validate_map(&game))
-		return (error_exit(&game, "Invalid map"));
 
 	load_stub(&game);
 	printf("[stub] map %dx%d, player at (%.2f, %.2f)\n",

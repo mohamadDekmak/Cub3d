@@ -77,6 +77,8 @@ typedef struct s_map
 	int		height;
 	int		fl_color;
 	int		ce_color;
+	int 	floor_set;
+    int 	ceiling_set;
 	char	*tex_path[4];
 	int		map_started;
 }	t_map;
@@ -170,6 +172,7 @@ void parse_grid_line(char *line , t_game *game);
 int validate_map(t_game *game);
 void init_player(t_game *game, int x, int y, char direction);
 int check_closed_map(t_game *game);
+int validate_data(t_game *game);
 /* utils/stub_map.c — TEMPORARY, see Stage 13 in the raycasting plan */
 void	load_stub(t_game *game);
 #endif

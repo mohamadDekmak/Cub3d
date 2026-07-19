@@ -20,6 +20,13 @@ int parse_cub(char *filename, t_game *game)
         line = get_next_line(fd);
     }
     close(fd);
-    printf("File open succesfully");
+    
+    if (validate_data(game))
+        return (1);
+    
+    if (validate_map(game))
+        return (1);
+    
+    printf("Parsing successful\n");
     return 0;
 }
