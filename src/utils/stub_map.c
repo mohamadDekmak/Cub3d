@@ -27,8 +27,8 @@ void	load_stub(t_game *game)
 		game->map.grid[i] = ft_strdup(g_stub_rows[i]);
 		i++;
 	}
-	game->map.fl_color = (220 << 16) | (100 << 8) | 0;
-	game->map.ce_color = (225 << 16) | (30 << 8) | 0;
+	game->map.fl_color = (46 << 16) | (49 << 8) | 54;
+	game->map.ce_color = (5 << 16) | (7 << 8) | 15;
 	game->map.tex_path[NO] = ft_strdup("./textures/north.xpm");
 	game->map.tex_path[SO] = ft_strdup("./textures/south.xpm");
 	game->map.tex_path[WE] = ft_strdup("./textures/west.xpm");
