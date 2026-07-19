@@ -1,9 +1,24 @@
 #include "cub3d.h"
 
+static int	pick_color(t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->step_x > 0)
+			return (get_rgb(220, 220, 60));
+		return (get_rgb(60, 60, 220));
+	}
+	if (ray->step_y > 0)
+		return (get_rgb(220, 60, 60));
+	return (get_rgb(60, 220, 60));
+}
+
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
 	int	y;
+	int	wall_color;
 
+	wall_color = pick_color(ray);
 	y = 0;
 	while (y < WIN_H)
 	{
@@ -12,7 +27,7 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 		else if (y > ray->draw_end)
 			my_pixel_put(&game->frame, x, y, game->map.fl_color);
 		else
-			my_pixel_put(&game->frame, x, y, get_rgb(200, 200, 200));
+			my_pixel_put(&game->frame, x, y, wall_color);
 		y++;
 	}
 }
