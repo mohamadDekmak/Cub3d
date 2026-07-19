@@ -12,10 +12,11 @@ int	is_wall(t_game *game, int map_x, int map_y)
 	return (0);
 }
 
-static void	init_ray(t_game *game, t_ray *ray)
+static void	init_ray(t_game *game, t_ray *ray, int x)
 {
-	ray->dir_x = game->player.dir_x;
-	ray->dir_y = game->player.dir_y;
+	ray->camera_x = 2.0 * x / (double)WIN_W - 1.0;
+	ray->dir_x = game->player.dir_x + game->player.plane_x * ray->camera_x;
+	ray->dir_y = game->player.dir_y + game->player.plane_y * ray->camera_x;
 	ray->map_x = (int)game->player.x;
 	ray->map_y = (int)game->player.y;
 	if (ray->dir_x == 0)
@@ -86,9 +87,9 @@ static void	run_dda(t_game *game, t_ray *ray)
 			- ray->distance_between_horizontal_lines;
 }
 
-void	cast_ray(t_game *game, t_ray *ray)
+void	cast_ray(t_game *game, t_ray *ray, int x)
 {
-	init_ray(game, ray);
+	init_ray(game, ray, x);
 	set_step(game, ray);
 	run_dda(game, ray);
 	ray->line_height = (int)(WIN_H / ray->perp_dist);

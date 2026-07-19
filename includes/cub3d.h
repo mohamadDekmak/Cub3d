@@ -103,6 +103,7 @@ typedef struct s_game
 /* Grows stage by stage: camera_x arrives in Stage 6 (FOV sweep).             */
 typedef struct s_ray
 {
+	double	camera_x;
 	double	dir_x;
 	double	dir_y;
 	int		map_x;
@@ -134,7 +135,7 @@ void	my_pixel_put(t_img *img, int x, int y, int color);
 void	render_frame(t_game *game);
 int		render_loop(t_game *game);
 int		is_wall(t_game *game, int map_x, int map_y);
-void	cast_ray(t_game *game, t_ray *ray);
+void	cast_ray(t_game *game, t_ray *ray, int x);
 void	draw_column(t_game *game, t_ray *ray, int x);
 
 /* utils/ */

@@ -50,19 +50,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_game(&game);
-	/* STAGE 0 — temporary: parser is still being built by teammate, so skip it
-	 * for now and rely on load_stub() below. Re-enable once parse_cub()/
-	 * validate_map() are ready (see Stage 13 of the raycasting plan). */
 	/*
 	if(parse_cub(argv[1], &game))
 		return 1;
 	if (validate_map(&game))
 		return (error_exit(&game, "Invalid map"));
 	*/
-
-	/* STAGE 0 — temporary: load_stub() fills game->map/game->player by hand
-	 * since parse_cub() doesn't populate them yet. Delete this call once it
-	 * does (see Stage 13 of the raycasting plan). */
 	load_stub(&game);
 	printf("[stub] map %dx%d, player at (%.2f, %.2f)\n",
 		game.map.width, game.map.height, game.player.x, game.player.y);
