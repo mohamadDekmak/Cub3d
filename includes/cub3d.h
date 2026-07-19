@@ -168,6 +168,8 @@ void parse_texture(char *line , t_game *game);
 void parse_color(char *line , t_game *game);
 void parse_grid_line(char *line , t_game *game);
 int validate_map(t_game *game);
+void init_player(t_game *game, int x, int y, char direction);
+int check_closed_map(t_game *game);
 /* utils/stub_map.c — TEMPORARY, see Stage 13 in the raycasting plan */
 void	load_stub(t_game *game);
 #endif
