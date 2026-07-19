@@ -48,6 +48,10 @@
 # define EVENT_KEYPRESS 2
 # define EVENT_DESTROY 17
 
+/* Movement/rotation step sizes */
+# define MOVE_SPEED 0.2
+# define ROT_SPEED 0.1
+
 /* -------------------------------------------------------------------------- */
 /*  Data structures                                                           */
 /* -------------------------------------------------------------------------- */
@@ -137,6 +141,10 @@ int		render_loop(t_game *game);
 int		is_wall(t_game *game, int map_x, int map_y);
 void	cast_ray(t_game *game, t_ray *ray, int x);
 void	draw_column(t_game *game, t_ray *ray, int x);
+
+/* player/ */
+void	move_player(t_game *game, double move_x, double move_y);
+void	rotate_player(t_game *game, double angle);
 
 /* utils/ */
 int		error_exit(t_game *game, char *msg);

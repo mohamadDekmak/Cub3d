@@ -19,6 +19,8 @@ SRCS = \
 	$(SRC_DIR)/render/image.c \
 	$(SRC_DIR)/render/draw.c \
 	$(SRC_DIR)/render/raycast.c \
+	$(SRC_DIR)/player/moves.c \
+	$(SRC_DIR)/player/rotate.c \
     $(SRC_DIR)/events/hooks.c \
     $(SRC_DIR)/parsing/parser.c \
     $(SRC_DIR)/parsing/parser_utils.c \
