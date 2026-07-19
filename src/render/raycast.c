@@ -14,7 +14,7 @@ int	is_wall(t_game *game, int map_x, int map_y)
 
 static void	init_ray(t_game *game, t_ray *ray, int x)
 {
-	ray->camera_x = 2.0 * x / (double)WIN_W - 1.0; // Convert screen x coordinate to camera plane position (-1 = left, 0 = center, 1 = right)
+	ray->camera_x = 2.0 * x / (double)WIN_W - 1.0;
 	ray->dir_x = game->player.dir_x + game->player.plane_x * ray->camera_x;
 	ray->dir_y = game->player.dir_y + game->player.plane_y * ray->camera_x;
 	ray->map_x = (int)game->player.x;

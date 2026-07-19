@@ -45,27 +45,18 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	(void)argv;
 	if (argc != 2)
 	{
 		write(2, "Error\nUsage: ./cub3D <map.cub>\n", 31);
 		return (1);
 	}
 	init_game(&game);
-
-	load_stub(&game);
-	printf("[stub] map %dx%d, player at (%.2f, %.2f)\n",
-		game.map.width, game.map.height, game.player.x, game.player.y);
-
+	if (parse_cub(argv[1], &game) != 0)
+		return (1);
 	if (setup_window(&game) != 0)
 		return (1);
 	if (load_textures(&game) != 0)
 		return (1);
-	printf("[stub] tex sizes: %dx%d %dx%d %dx%d %dx%d\n",
-		game.tex[NO].width, game.tex[NO].height,
-		game.tex[SO].width, game.tex[SO].height,
-		game.tex[WE].width, game.tex[WE].height,
-		game.tex[EA].width, game.tex[EA].height);
 	mlx_loop_hook(game.mlx, (int (*)(void))(void *)render_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

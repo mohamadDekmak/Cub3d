@@ -15,7 +15,6 @@ SRC_DIR		= src
 SRCS = \
     $(SRC_DIR)/main.c \
 	$(SRC_DIR)/utils/errors.c \
-	$(SRC_DIR)/utils/stub_map.c \
 	$(SRC_DIR)/render/image.c \
 	$(SRC_DIR)/render/draw.c \
 	$(SRC_DIR)/render/raycast.c \
