@@ -64,6 +64,13 @@ int	main(int argc, char **argv)
 
 	if (setup_window(&game) != 0)
 		return (1);
+	if (load_textures(&game) != 0)
+		return (1);
+	printf("[stub] tex sizes: %dx%d %dx%d %dx%d %dx%d\n",
+		game.tex[NO].width, game.tex[NO].height,
+		game.tex[SO].width, game.tex[SO].height,
+		game.tex[WE].width, game.tex[WE].height,
+		game.tex[EA].width, game.tex[EA].height);
 	mlx_loop_hook(game.mlx, (int (*)(void))(void *)render_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

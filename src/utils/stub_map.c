@@ -29,6 +29,10 @@ void	load_stub(t_game *game)
 	}
 	game->map.fl_color = (220 << 16) | (100 << 8) | 0;
 	game->map.ce_color = (225 << 16) | (30 << 8) | 0;
+	game->map.tex_path[NO] = ft_strdup("./textures/north.xpm");
+	game->map.tex_path[SO] = ft_strdup("./textures/south.xpm");
+	game->map.tex_path[WE] = ft_strdup("./textures/west.xpm");
+	game->map.tex_path[EA] = ft_strdup("./textures/east.xpm");
 	game->player.x = 4.5;
 	game->player.y = 3.5;
 	game->player.dir_x = 0.0;
