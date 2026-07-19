@@ -29,19 +29,36 @@ static int	compute_tex_x(t_ray *ray, t_img *tex)
 	return (tex_x);
 }
 
+static void	set_tex_column(t_game *game, t_ray *ray)
+{
+	t_img	*tex;
+
+	ray->tex_index = pick_tex_index(ray);
+	tex = &game->tex[ray->tex_index];
+	ray->tex_x = compute_tex_x(ray, tex);
+	ray->tex_step = (double)tex->height / ray->line_height;
+	ray->tex_pos = (ray->draw_start - WIN_H / 2 + ray->line_height / 2)
+		* ray->tex_step;
+}
+
+static void	draw_tex_pixel(t_game *game, t_ray *ray, int x, int y)
+{
+	t_img	*tex;
+	int		tex_y;
+
+	tex = &game->tex[ray->tex_index];
+	tex_y = (int)ray->tex_pos;
+	if (tex_y >= tex->height)
+		tex_y = tex->height - 1;
+	my_pixel_put(&game->frame, x, y, get_tex_pixel(tex, ray->tex_x, tex_y));
+	ray->tex_pos += ray->tex_step;
+}
+
 void	draw_column(t_game *game, t_ray *ray, int x)
 {
-	int		y;
-	int		tex_x;
-	int		tex_y;
-	t_img	*tex;
-	double	step;
-	double	tex_pos;
+	int	y;
 
-	tex = &game->tex[pick_tex_index(ray)];
-	tex_x = compute_tex_x(ray, tex);
-	step = (double)tex->height / ray->line_height;
-	tex_pos = (ray->draw_start - WIN_H / 2 + ray->line_height / 2) * step;
+	set_tex_column(game, ray);
 	y = 0;
 	while (y < WIN_H)
 	{
@@ -50,13 +67,7 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 		else if (y > ray->draw_end)
 			my_pixel_put(&game->frame, x, y, game->map.fl_color);
 		else
-		{
-			tex_y = (int)tex_pos;
-			if (tex_y >= tex->height)
-				tex_y = tex->height - 1;
-			my_pixel_put(&game->frame, x, y, get_tex_pixel(tex, tex_x, tex_y));
-			tex_pos += step;
-		}
+			draw_tex_pixel(game, ray, x, y);
 		y++;
 	}
 }

@@ -128,6 +128,10 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		tex_index;
+	int		tex_x;
+	double	tex_step;
+	double	tex_pos;
 }	t_ray;
 
 /* -------------------------------------------------------------------------- */
