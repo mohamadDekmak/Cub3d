@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdekmak <mdekmak@student.42beirut.com>     #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026-07-21 00:00:00 by mdekmak           #+#    #+#             */
+/*   Updated: 2026-07-21 00:00:00 by mdekmak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	parse_grid_line(char	*line, t_game	*game)
+void	parse_grid_line(char *line, t_game *game)
 {
-
 	char	**grid;
 	char	*tmp;
 	int		i;
 
 	grid = malloc((game->map.height + 2) * sizeof(char *));
-	if(!grid)
-		return;
+	if (!grid)
+		return ;
 	i = 0;
 	while (i < game->map.height)
 	{

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdekmak <mdekmak@student.42beirut.com>     #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,24 @@
 
 #include "cub3d.h"
 
-int	parse_cub(char *filename, t_game *game)
+void	render_frame(t_game *game)
 {
-	int		fd;
-	char	*line;
+	int		x;
+	t_ray	ray;
 
-	fd = open(filename, O_RDONLY);
-	if (check_extention(filename))
-		return (error_exit(game, "invalid file text"));
-	if (fd < 1)
-		return (error_exit(game, "cannot open file"));
-	line = get_next_line(fd);
-	while (line)
+	x = 0;
+	while (x < WIN_W)
 	{
-		parse_line(line, game);
-		free(line);
-		line = get_next_line(fd);
+		cast_ray(game, &ray, x);
+		draw_column(game, &ray, x);
+		x++;
 	}
-	close(fd);
-	if (validate_data(game))
-		return (1);
-	if (validate_map(game))
-		return (1);
-	printf("Parsing successful\n");
+	mlx_put_image_to_window(game->mlx, game->win, game->frame.ptr, 0, 0);
+}
+
+int	render_loop(t_game *game)
+{
+	handle_movement(game);
+	render_frame(game);
 	return (0);
 }

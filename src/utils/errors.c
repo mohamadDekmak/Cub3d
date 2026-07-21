@@ -22,8 +22,7 @@ static int	msglen(const char *s)
 	return (i);
 }
 
-
-void	free_game(t_game *game)
+static void	free_textures(t_game *game)
 {
 	int	i;
 
@@ -36,16 +35,27 @@ void	free_game(t_game *game)
 			free(game->map.tex_path[i]);
 		i++;
 	}
-	if (game->map.grid)
+}
+
+static void	free_grid(t_game *game)
+{
+	int	i;
+
+	if (!game->map.grid)
+		return ;
+	i = 0;
+	while (i < game->map.height)
 	{
-		i = 0;
-		while (i < game->map.height)
-		{
-			free(game->map.grid[i]);
-			i++;
-		}
-		free(game->map.grid);
+		free(game->map.grid[i]);
+		i++;
 	}
+	free(game->map.grid);
+}
+
+void	free_game(t_game *game)
+{
+	free_textures(game);
+	free_grid(game);
 	if (game->frame.ptr)
 		mlx_destroy_image(game->mlx, game->frame.ptr);
 	if (game->win)

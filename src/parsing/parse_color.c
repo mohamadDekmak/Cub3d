@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_color.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdekmak <mdekmak@student.42beirut.com>     #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026-07-21 00:00:00 by mdekmak           #+#    #+#             */
+/*   Updated: 2026-07-21 00:00:00 by mdekmak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }
 
-void parse_color(char *line , t_game *game)
+void	parse_color(char *line, t_game *game)
 {
 	char	**rgb;
 	int		r;
@@ -25,7 +37,7 @@ void parse_color(char *line , t_game *game)
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	free_split(rgb);
-	if(line[0] == 'F')
+	if (line[0] == 'F')
 	{
 		game->map.fl_color = get_rgb(r, g, b);
 		game->map.floor_set = 1;

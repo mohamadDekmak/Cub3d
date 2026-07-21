@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-#include "../gnl/get_next_line.h"
+# include "../gnl/get_next_line.h"
 /* -------------------------------------------------------------------------- */
 /*  Config                                                                    */
 /* -------------------------------------------------------------------------- */
@@ -77,8 +77,8 @@ typedef struct s_map
 	int		height;
 	int		fl_color;
 	int		ce_color;
-	int 	floor_set;
-    int 	ceiling_set;
+	int		floor_set;
+	int		ceiling_set;
 	char	*tex_path[4];
 	int		map_started;
 }	t_map;
@@ -151,6 +151,8 @@ void	render_frame(t_game *game);
 int		render_loop(t_game *game);
 int		is_wall(t_game *game, int map_x, int map_y);
 void	cast_ray(t_game *game, t_ray *ray, int x);
+void	run_dda(t_game *game, t_ray *ray);
+void	compute_wall_x(t_game *game, t_ray *ray);
 void	draw_column(t_game *game, t_ray *ray, int x);
 int		load_textures(t_game *game);
 
@@ -163,18 +165,15 @@ void	handle_movement(t_game *game);
 int		error_exit(t_game *game, char *msg);
 void	free_game(t_game *game);
 
-
-
-//Parsing
-
-int parse_cub(char *filename, t_game *game);
-int check_extention(char *filename);
-void parse_line(char *line, t_game *game);
-void parse_texture(char *line , t_game *game);
-void parse_color(char *line , t_game *game);
-void parse_grid_line(char *line , t_game *game);
-int validate_map(t_game *game);
-void init_player(t_game *game, int x, int y, char direction);
-int check_closed_map(t_game *game);
-int validate_data(t_game *game);
+/* parsing/ */
+int		parse_cub(char *filename, t_game *game);
+int		check_extention(char *filename);
+void	parse_line(char *line, t_game *game);
+void	parse_texture(char *line, t_game *game);
+void	parse_color(char *line, t_game *game);
+void	parse_grid_line(char *line, t_game *game);
+int		validate_map(t_game *game);
+void	init_player(t_game *game, int x, int y, char direction);
+int		check_closed_map(t_game *game);
+int		validate_data(t_game *game);
 #endif
